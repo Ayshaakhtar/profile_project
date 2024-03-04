@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'Header.html' %}
+    {% include 'Css.html' %}
+    <title>Profiles</title>
+</head>
+<body>
+<br>
+<div class="container">
+    <div class="row">
+        {% for human in human %}
+            <div class="col-md-4 mb-4">
+                <div class="profile-card">
+                    {% if human.image %}
+                        <img src="{{ human.image.url }}" alt="{{ human.image }}" name="image" class="img-fluid img-thumbnail" height=150px width="150px">
+                    {% endif %}
+                    <h5>{{ human.name }}</h5>
+                    <p>Email: {{ human.email }}</p>
+                    <p>Age: {{ human.age }}</p>
+                    <p>Gender: {{ human.get_gender_display }}</p>
+
+                    <!-- Add image options here -->
+                    <div class="btn-group" role="group">
+                        <a href="{% url 'update' human.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete_prof' human.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% include 'Footer.html' %}
+</body>
+</html>

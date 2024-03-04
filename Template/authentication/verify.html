@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'Header.html' %}
+    {% include 'Css.html' %}
+</head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Account</title>
+</head>
+<body>
+    <h2>Give your otp to verify your account</h2>
+    <form action="#" method="POST">
+                        {% if messages %}
+                        <ul class="messages"style="color:Red;">
+                            {% for message in messages %}
+                            {{ message }}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                            {% csrf_token %}
+        <label for="otp">Enter OTP:</label><br>
+        <input type="text" id="otp" name="otp" required><br><br>
+        <input type="submit" value="Verify">
+    </form>
+</body>
+{% include 'Footer.html' %}
+</html>

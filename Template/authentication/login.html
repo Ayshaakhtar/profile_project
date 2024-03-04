@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'Header.html' %}
+    {% include 'Css.html' %}
+    <title>Login</title>
+</head>
+
+{% block body %}
+<!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+  <style>
+    .rounded-t-5 {
+      border-top-left-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+    }
+
+    @media (min-width: 992px) {
+      .rounded-tr-lg-0 {
+        border-top-right-radius: 0;
+      }
+
+      .rounded-bl-lg-5 {
+        border-bottom-left-radius: 0.5rem;
+      }
+    }
+  </style>
+  <div class="card mb-3">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+        <div class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+    <form method="post">
+        {% if messages %}
+            <ul class="messages" style="color: Green;">
+            {% for message in messages %} {{ message }} {% endfor %}
+            </ul>
+        {% endif %}
+        <h3>Login</h3>
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" placeholder="Write your username" id="username" name="name">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button type="submit">Log In</button>
+
+    </form>
+     </br>
+              <!-- Register Link -->
+            <div class="text-center">
+            <p>Don't have an account? <a href="{% url 'registration_user' %}">Register now</a></p>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+{% endblock %}
+
+{% include 'Footer.html' %}
+
+
